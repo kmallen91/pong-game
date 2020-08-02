@@ -46,3 +46,17 @@ const comp = {
     score: 0,
     color: 'WHITE'
 }
+
+// Net function
+function drawNet() {
+    for(let i = 0; i <= canvas.height; i+=15){
+        drawRect(net.x, net.y, net.width, net.height, net.color)
+    }
+}
+
+// Text function
+function drawText(text, x, y) {
+    ctx.fillStyle = '#FFF'
+    ctx.font = '75px fantasy'
+    ctx.fillText(text, x, y)
+}
