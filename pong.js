@@ -1,17 +1,18 @@
 const canvas = document.getElementById('pong')
-const context = canvas.getContext('2d')
+const ctx = canvas.getContext('2d')
 
-context.fillStyle = 'black'
-context.fillRect(100, 200, 50, 75)
 
-context.fillStyle = 'red'
-context.beginPath()
-context.arc(300, 350, 100, 0, Math.PI*2, false)
-context.closePath()
-context.fill
+// draw cirlce for ball
+function drawArc(x, y, r, color) {
+    ctx.fillStyle = color
+    ctx.beginPath()
+    ctx.arc(300, 350, 100, 0, Math.PI*2, false)
+    ctx.closePath()
+    ctx.fill()
+}
 
-function drawRect(x, y, w, h, color) {
-    
+// draw rectangles for paddles
+function drawRect(x, y, w, h, color) {    
     ctx.fillStyle = color
     ctx.fillRect(x,y,w,h) 
 }
