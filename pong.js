@@ -60,3 +60,33 @@ function drawText(text, x, y) {
     ctx.font = '75px fantasy'
     ctx.fillText(text, x, y)
 }
+
+// reset ball function
+function resetBall() {
+    ball.x = canvas.width/2
+    ball.y = canvas.height/2
+    ball.velocityX = -ball.velocityX // switches ball direction
+    ball.speed = 7
+}
+
+// WIP Arrow key event listener
+document.onkeydown = checkKey;
+
+function checkKey(e) {
+
+    e = e || window.event;
+
+    if (e.keyCode == '38') {
+        // up arrow
+    }
+    else if (e.keyCode == '40') {
+        // down arrow
+    }
+    else if (e.keyCode == '37') {
+    // left arrow
+    }
+    else if (e.keyCode == '39') {
+    // right arrow
+    }
+
+}
