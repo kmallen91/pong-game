@@ -90,3 +90,18 @@ function checkKey(e) {
     }
 
 }
+
+// collision detection
+function collision(ball,paddle){
+    paddle.top = paddle.y;
+    paddle.bottom = paddle.y + paddle.height;
+    paddle.left = paddle.x;
+    paddle.right = paddle.x + paddle.width;
+    
+    ball.top = ball.y - ball.radius;
+    ball.bottom = ball.y + ball.radius;
+    ball.left = ball.x - ball.radius;
+    ball.right = ball.x + ball.radius;
+    
+    return paddle.left < ball.right && paddle.top < ball.bottom && paddle.right > ball.left && paddle.bottom > ball.top;
+}
