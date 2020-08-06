@@ -105,3 +105,15 @@ function collision(ball,paddle){
     
     return paddle.left < ball.right && paddle.top < ball.bottom && paddle.right > ball.left && paddle.bottom > ball.top;
 }
+
+// update function, does all calculations
+
+function update() {
+
+    // ball velocity
+    ball.x += ball.velocityX
+    ball.y += ball.velocityY
+
+    // check for collision on paddles
+    let player = (ball.x + ball.radius < canvas.width/2) ? user : com
+}
