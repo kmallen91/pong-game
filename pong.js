@@ -112,7 +112,7 @@ function update() {
 
     //change score, reset ball if hits edge of canvas
     if (ball.x - ball.radius < 0){
-        com.score++
+        comp.score++
         resetBall()
     }
     else if (ball.x + ball.radius > canvas.width){
