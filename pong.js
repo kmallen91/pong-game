@@ -124,6 +124,25 @@ function update() {
     ball.x += ball.velocityX
     ball.y += ball.velocityY
 
+    // Computer AI movement
+    comp.y += ((ball.y - (comp.y + comp.height/2)))*0.1
+
+    // when ball collides with bottom and top walls, inverse y velocity
+    if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
+        ball.velocityY = -ball.velocityY
+    }
+
     // check for collision on paddles
     let player = (ball.x + ball.radius < canvas.width/2) ? user : com
+
+    // paddle collision check
+    if (collision(ball, player)) {
+        
+        // check where ball hits paddle
+        let collidePoint = (ball.y - (player.y + player.height/2))
+
+        // normalize the value of collidePoint from the set height to 1
+        // -player.height/2 < collidePoint < player.height/2
+        collidePoint = collidePoint / (player.height/2)
+    }
 }
