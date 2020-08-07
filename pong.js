@@ -144,5 +144,19 @@ function update() {
         // normalize the value of collidePoint from the set height to 1
         // -player.height/2 < collidePoint < player.height/2
         collidePoint = collidePoint / (player.height/2)
+
+        // when the ball hits the top of a paddle, return a -45degees angle
+        // when the ball hits the middle of a paddle, return a 0degees angle
+        // when the ball hits the bottom of a paddle, return a 45degees angle
+        // Math.PI/4 = 45degrees
+        let angleRad = (Math.PI/4) * collidePoint
+
+        // change the X and Y directional velocities
+        let direction = (ball.x + ball.radius < canvas.width/2) ? 1 : -1
+        ball.velocityX = direction * ball.speed * Math.cos(angleRad)
+        ball.velocityY = ball.speed * Math.sin(angleRad)
+
+        // speed up ball every hit
+        ball.speed += 0.1
     }
 }
