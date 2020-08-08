@@ -160,3 +160,32 @@ function update() {
         ball.speed += 0.1
     }
 }
+
+// render function, does the drawing
+function render(){
+    
+    // clear the canvas
+    drawRect(0, 0, canvas.width, canvas.height, "#000");
+    
+    // draw the user score to the left
+    drawText(user.score,canvas.width/4,canvas.height/5);
+    
+    // draw the COM score to the right
+    drawText(com.score,3*canvas.width/4,canvas.height/5);
+    
+    // draw the net
+    drawNet();
+    
+    // draw the user's paddle
+    drawRect(user.x, user.y, user.width, user.height, user.color);
+    
+    // draw the COM's paddle
+    drawRect(com.x, com.y, com.width, com.height, com.color);
+    
+    // draw the ball
+    drawArc(ball.x, ball.y, ball.radius, ball.color);
+}
+function game(){
+    update();
+    render();
+}
