@@ -171,7 +171,7 @@ function render(){
     drawText(user.score,canvas.width/4,canvas.height/5);
     
     // draw the COM score to the right
-    drawText(com.score,3*canvas.width/4,canvas.height/5);
+    drawText(comp.score,3*canvas.width/4,canvas.height/5);
     
     // draw the net
     drawNet();
@@ -180,12 +180,19 @@ function render(){
     drawRect(user.x, user.y, user.width, user.height, user.color);
     
     // draw the COM's paddle
-    drawRect(com.x, com.y, com.width, com.height, com.color);
+    drawRect(comp.x, comp.y, comp.width, comp.height, comp.color);
     
     // draw the ball
     drawArc(ball.x, ball.y, ball.radius, ball.color);
 }
+
 function game(){
     update();
     render();
 }
+
+// number of frames per second
+let framePerSecond = 50;
+
+// call the game function 50 times every 1 Sec
+let loop = setInterval(game, 1000/framePerSecond);
