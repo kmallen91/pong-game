@@ -74,7 +74,7 @@ function drawText(text, x, y) {
 function resetBall() {
     ball.x = canvas.width/2
     ball.y = canvas.height/2
-    ball.velocityX = -ball.velocityX // switches ball direction
+    ball.velocityX = -ball.velocityX// switches ball direction
     ball.speed = 7
 }
 
@@ -143,7 +143,7 @@ function update() {
     ball.y += ball.velocityY
 
     // Computer AI movement
-    comp.y += ((ball.y - (comp.y + comp.height/2)))*0.1
+    comp.y += ((ball.y - (comp.y + comp.height/2)))*0.08
 
     // when ball collides with bottom and top walls, inverse y velocity
     if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
@@ -175,7 +175,7 @@ function update() {
         ball.velocityY = ball.speed * Math.sin(angleRad)
 
         // speed up ball every hit
-        ball.speed += 0.1
+        ball.speed += 0.5
     }
 }
 

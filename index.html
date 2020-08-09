@@ -4,10 +4,17 @@
     <meta charset='UTF-8'>
     <title> Pong in Javascript </title>
     <style>
+        #title{
+            text-align: center;
+            font-size: 75px;
+            font-family: fantasy;
+        }
+
         #pong{
             border: 2px solid #FFF;
             position: absolute;
-            margin :auto;
+            padding-top: 5rem;
+            margin: auto;
             top:0;
             right:0;
             left:0;
@@ -16,6 +23,7 @@
     </style>
 </head>
 <body>
+    <h1 id='title'> Pong</h1>
 
     <canvas id='pong' width='600' height='400'></canvas>
     <script src ='pong.js'></script>
