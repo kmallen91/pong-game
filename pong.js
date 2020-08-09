@@ -2,19 +2,13 @@ const canvas = document.getElementById('pong')
 const ctx = canvas.getContext('2d')
 
 
-// draw cirlce for ball
+// draw circle for ball
 function drawArc(x, y, r, color) {
     ctx.fillStyle = color
     ctx.beginPath()
-    ctx.arc(300, 350, 100, 0, Math.PI*2, false)
+    ctx.arc(x, y, r, 0, Math.PI*2, false)
     ctx.closePath()
     ctx.fill()
-}
-
-// draw rectangles for paddles
-function drawRect(x, y, w, h, color) {    
-    ctx.fillStyle = color
-    ctx.fillRect(x,y,w,h) 
 }
 
 const ball = {
@@ -24,7 +18,16 @@ const ball = {
     velocityX: 5,
     velocityY: 5,
     speed: 7,
-    color: 'WHITE'
+    color: '#FFF'
+}
+
+// Net
+const net = {
+    x: (canvas.width - 2) / 2,
+    y: 0,
+    height: 10,
+    width: 2,
+    color: '#FFF'
 }
 
 // User Paddle
@@ -34,7 +37,7 @@ const user = {
     width: 10,
     height: 100,
     score: 0,
-    color: 'WHITE'
+    color: '#FFF'
 }
 
 // Computer Paddle
@@ -44,20 +47,26 @@ const comp = {
     width: 10,
     height: 100,
     score: 0,
-    color: 'WHITE'
+    color: '#FFF'
+}
+
+// draw rectangles for paddles
+function drawRect(x, y, w, h, color) {    
+    ctx.fillStyle = color
+    ctx.fillRect(x,y,w,h) 
 }
 
 // Net function
 function drawNet() {
-    for(let i = 0; i <= canvas.height; i+=15){
-        drawRect(net.x, net.y, net.width, net.height, net.color)
+    for(let i = 0; i <= canvas.height; i += 15){
+        drawRect(net.x, net.y + i, net.width, net.height, net.color)
     }
 }
 
 // Text function
 function drawText(text, x, y) {
     ctx.fillStyle = '#FFF'
-    ctx.font = '75px fantasy'
+    ctx.font = '65px fantasy'
     ctx.fillText(text, x, y)
 }
 
@@ -70,25 +79,34 @@ function resetBall() {
 }
 
 // WIP Arrow key event listener
-document.onkeydown = checkKey;
+// document.onkeydown = checkKey;
 
-function checkKey(e) {
+// function checkKey(e) {
 
-    e = e || window.event;
+//     e = e || window.event;
 
-    if (e.keyCode == '38') {
-    // up arrow
-    }
-    else if (e.keyCode == '40') {
-    // down arrow
-    }
-    else if (e.keyCode == '37') {
-    // left arrow
-    }
-    else if (e.keyCode == '39') {
-    // right arrow
-    }
+//     if (e.keyCode == '38') {
+//     // up arrow
+//     }
+//     else if (e.keyCode == '40') {
+//     // down arrow
+//     }
+//     else if (e.keyCode == '37') {
+//     // left arrow
+//     }
+//     else if (e.keyCode == '39') {
+//     // right arrow
+//     }
 
+// }
+
+// listening to the mouse
+canvas.addEventListener("mousemove", getMousePos);
+
+function getMousePos(evt){
+    let rect = canvas.getBoundingClientRect();
+    
+    user.y = evt.clientY - rect.top - user.height/2;
 }
 
 // collision detection
@@ -111,12 +129,12 @@ function collision(ball,paddle){
 function update() {
 
     //change score, reset ball if hits edge of canvas
-    if (ball.x - ball.radius < 0){
-        comp.score++
+    if (ball.x + ball.radius > canvas.width){
+        user.score+=1
         resetBall()
     }
-    else if (ball.x + ball.radius > canvas.width){
-        user.score++
+    else if (ball.x - ball.radius < 0){
+        comp.score+=1
         resetBall()
     }
 
@@ -133,7 +151,7 @@ function update() {
     }
 
     // check for collision on paddles
-    let player = (ball.x + ball.radius < canvas.width/2) ? user : com
+    let player = (ball.x + ball.radius < canvas.width/2) ? user : comp
 
     // paddle collision check
     if (collision(ball, player)) {
@@ -168,10 +186,10 @@ function render(){
     drawRect(0, 0, canvas.width, canvas.height, "#000");
     
     // draw the user score to the left
-    drawText(user.score,canvas.width/4,canvas.height/5);
+    drawText(user.score, canvas.width/4, canvas.height/5);
     
     // draw the COM score to the right
-    drawText(comp.score,3*canvas.width/4,canvas.height/5);
+    drawText(comp.score, 3*canvas.width/4, canvas.height/5);
     
     // draw the net
     drawNet();
