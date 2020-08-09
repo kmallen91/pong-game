@@ -75,7 +75,7 @@ function resetBall() {
     ball.x = canvas.width/2
     ball.y = canvas.height/2
     ball.velocityX = -ball.velocityX// switches ball direction
-    ball.speed = 7
+    ball.speed = 6
 }
 
 // WIP Arrow key event listener
