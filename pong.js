@@ -125,7 +125,6 @@ function collision(ball,paddle){
 }
 
 // update function, does all calculations
-
 function update() {
 
     //change score, reset ball if hits edge of canvas
