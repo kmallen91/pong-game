@@ -142,7 +142,7 @@ function update() {
     ball.y += ball.velocityY
 
     // Computer AI movement
-    comp.y += ((ball.y - (comp.y + comp.height/2)))*0.08
+    comp.y += ((ball.y - (comp.y + comp.height/2)))*0.065
 
     // when ball collides with bottom and top walls, inverse y velocity
     if(ball.y - ball.radius < 0 || ball.y + ball.radius > canvas.height) {
