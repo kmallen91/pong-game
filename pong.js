@@ -179,8 +179,7 @@ function update() {
 }
 
 // render function, does the drawing
-function render(){
-    
+function render(){    
     // clear the canvas
     drawRect(0, 0, canvas.width, canvas.height, "#000");
     
